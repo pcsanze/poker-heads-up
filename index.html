@@ -8,22 +8,20 @@
 </head>
 <body>
   <main class="app">
-    <header class="topbar">
-      <button id="soundBtn" class="icon-btn" type="button" aria-label="効果音のオンオフ">SOUND ON</button>
-    </header>
-
     <section class="table-wrap" aria-label="ポーカーテーブル">
       <div class="table-glow"></div>
       <div class="poker-table">
         <section class="seat cpu-seat" aria-label="CPU">
-          <div class="player-head">
-            <div class="avatar cpu-avatar">AI</div>
-            <div>
-              <div class="name-row"><strong>DEALER AI</strong><span id="cpuDealer" class="dealer-chip">D</span></div>
-              <span id="cpuStack" class="stack">1,000</span>
+          <div class="seat-row">
+            <div class="player-head">
+              <div class="avatar cpu-avatar">AI</div>
+              <div>
+                <div class="name-row"><strong>DEALER AI</strong><span id="cpuDealer" class="dealer-chip">D</span></div>
+                <span id="cpuStack" class="stack">1,000</span>
+              </div>
             </div>
+            <div id="cpuCards" class="cards hand"></div>
           </div>
-          <div id="cpuCards" class="cards hand"></div>
           <div id="cpuStatus" class="status-pill">WAITING</div>
         </section>
 
@@ -38,14 +36,16 @@
         </section>
 
         <section class="seat player-seat" aria-label="プレイヤー">
-          <div class="player-head">
-            <div class="avatar">YOU</div>
-            <div>
-              <div class="name-row"><strong>PLAYER</strong><span id="playerDealer" class="dealer-chip">D</span></div>
-              <span id="playerStack" class="stack">1,000</span>
+          <div class="seat-row">
+            <div class="player-head">
+              <div class="avatar">YOU</div>
+              <div>
+                <div class="name-row"><strong>PLAYER</strong><span id="playerDealer" class="dealer-chip">D</span></div>
+                <span id="playerStack" class="stack">1,000</span>
+              </div>
             </div>
+            <div id="playerCards" class="cards hand"></div>
           </div>
-          <div id="playerCards" class="cards hand"></div>
           <div id="playerStatus" class="status-pill">READY</div>
         </section>
       </div>

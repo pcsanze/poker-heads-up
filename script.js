@@ -35,7 +35,7 @@ const el = {
   cpuStatus: $('cpuStatus'), playerStatus: $('playerStatus'), phase: $('phaseLabel'),
   message: $('message'), fold: $('foldBtn'), checkCall: $('checkCallBtn'), raise: $('raiseBtn'),
   deal: $('dealBtn'), slider: $('raiseSlider'), raiseValue: $('raiseValue'),
-  handNo: $('handNo'), bestHand: $('bestHand'), sound: $('soundBtn'),
+  handNo: $('handNo'), bestHand: $('bestHand'),
   cpuDealer: $('cpuDealer'), playerDealer: $('playerDealer'),
   playerSeat: document.querySelector('.player-seat'), cpuSeat: document.querySelector('.cpu-seat')
 };
@@ -527,6 +527,5 @@ el.deal.addEventListener('click', () => {
   if (gameOver) newGame(); else startHand();
 });
 el.slider.addEventListener('input', render);
-el.sound.addEventListener('click', () => { state.sound=!state.sound; el.sound.textContent=state.sound?'SOUND ON':'SOUND OFF'; playTone(600,.05,'sine',.02); });
 
 render();
