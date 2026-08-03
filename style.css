@@ -110,7 +110,7 @@ button { -webkit-tap-highlight-color: transparent; }
 .board-area { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(6px,1.4vh,12px); }
 .phase-label { color:var(--gold); letter-spacing:.2em; font-size:.72rem; font-weight:900; }
 .board { min-height:0; }
-.pot-panel { display:flex; align-items:center; gap:10px; padding:8px 16px; border-radius:999px; background:rgba(2,12,9,.62); border:1px solid rgba(227,189,106,.34); }
+.pot-panel { position:relative; z-index:5; flex-shrink:0; display:flex; align-items:center; gap:10px; padding:8px 16px; border-radius:999px; background:rgba(2,12,9,.9); border:1px solid rgba(227,189,106,.34); }
 .pot-panel span { color:var(--muted); font-size:.68rem; letter-spacing:.14em; font-weight:900; }
 .pot-panel strong { color:var(--gold); font-size:1.15rem; font-variant-numeric:tabular-nums; }
 .message { min-height:1.5em; margin:0; text-align:center; color:#eff7f3; font-size:.88rem; }
