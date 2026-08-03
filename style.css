@@ -74,7 +74,6 @@ button { -webkit-tap-highlight-color: transparent; }
 
 /* トランプの絵柄をUnicode文字ではなくCSS図形で直接描く(フォント依存を無くし、どの端末でも同じ形になる) */
 .suit-icon { display:inline-block; position:relative; width:.85em; height:.85em; vertical-align:middle; }
-.card .suit .suit-icon { width:1.7em; height:1.7em; }
 
 .suit-icon.diamond { background:currentColor; transform:scale(.7,.92) rotate(45deg); }
 
