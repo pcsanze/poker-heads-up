@@ -104,7 +104,7 @@ function cardHTML(card, hidden = false, delay = 0, flip = false) {
   const label = cardLabel(card);
   const suitIcon = `<span class="suit-icon ${SUIT_CLASS[card.suit]}"></span>`;
   return `<div class="card ${red ? 'red' : ''} ${flip ? 'flip-in' : ''}" style="animation-delay:${delay}ms" aria-label="${label}${card.suit}">
-    <span class="rank">${label}${suitIcon}</span><span class="suit">${suitIcon}</span><span class="mini">${label}${suitIcon}</span>
+    <span class="rank">${label}</span><span class="suit">${suitIcon}</span><span class="mini">${label}</span>
   </div>`;
 }
 function placeholders(n) { return Array.from({ length:n }, () => '<div class="card placeholder"></div>').join(''); }
