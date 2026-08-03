@@ -110,10 +110,12 @@ function cardHTML(card, hidden = false, delay = 0, flip = false) {
 function placeholders(n) { return Array.from({ length:n }, () => '<div class="card placeholder"></div>').join(''); }
 function bump(elm) { elm.classList.remove('bump'); void elm.offsetWidth; elm.classList.add('bump'); }
 
+let lastRenderedPot = 0;
 function render() {
   el.playerStack.textContent = state.playerStack.toLocaleString();
   el.cpuStack.textContent = state.cpuStack.toLocaleString();
   el.pot.textContent = state.pot.toLocaleString();
+  if (state.pot !== lastRenderedPot) { bump(el.pot); lastRenderedPot = state.pot; }
   el.handNo.textContent = `HAND ${state.handNo}`;
   el.phase.textContent = phaseName(state.phase);
   el.playerDealer.classList.toggle('active', state.dealer === 'player');
