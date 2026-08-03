@@ -69,7 +69,7 @@ button { -webkit-tap-highlight-color: transparent; }
 }
 .card.red { color:#bd302c; }
 .card .rank { font-size:1.08rem; line-height:1; font-weight:700; display:flex; align-items:center; gap:.15em; }
-.card .suit { align-self:center; font-size:2rem; line-height:1; }
+.card .suit { align-self:center; font-size:1.08rem; line-height:1; }
 .card .mini { align-self:flex-end; transform:rotate(180deg); font-size:.84rem; display:flex; align-items:center; gap:.15em; }
 
 /* トランプの絵柄をUnicode文字ではなくCSS図形で直接描く(フォント依存を無くし、どの端末でも同じ形になる) */
@@ -141,7 +141,7 @@ input[type="range"] { width:100%; accent-color:var(--gold); }
   .poker-table::after { inset:14px; border-radius:20px; }
   .card { width:clamp(26px, min(6.5vh, 12vw), 44px); height:clamp(37px, min(9.5vh, 17vw), 62px); padding:3px 4px; border-radius:6px; }
   .card .rank { font-size:.84rem; letter-spacing:-.03em; }
-  .card .suit { font-size:1.05rem; }
+  .card .suit { font-size:.84rem; }
   .card .mini { font-size:.72rem; }
   .cards { gap:5px; }
   .avatar { width:clamp(22px, min(4.5vh, 9vw), 34px); height:clamp(22px, min(4.5vh, 9vw), 34px); font-size:.56rem; }
