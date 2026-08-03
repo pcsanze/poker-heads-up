@@ -213,7 +213,7 @@ function startHand() {
   el.playerSeat.classList.remove('winner', 'loser');
   el.cpuSeat.classList.remove('winner', 'loser');
   el.message.classList.remove('result', 'win', 'lose', 'split');
-  setStatus('player', 'IN HAND'); setStatus('cpu', 'IN HAND');
+  setStatus('player', 'IN HAND');
 
   if (state.dealer === 'player') {
     commit('player', SMALL_BLIND); commit('cpu', BIG_BLIND); state.turn = 'player';
@@ -325,7 +325,7 @@ function closeStreet() {
 
 function advanceStreet() {
   state.playerStreetBet = 0; state.cpuStreetBet = 0; state.currentBet = 0; state.raisesThisStreet = 0;
-  setStatus('player', 'IN HAND'); setStatus('cpu', 'IN HAND');
+  setStatus('player', 'IN HAND');
   if (state.phase === 'preflop') {
     state.phase = 'flop'; state.deck.pop(); state.board.push(state.deck.pop(), state.deck.pop(), state.deck.pop());
     dealTicks(3);
