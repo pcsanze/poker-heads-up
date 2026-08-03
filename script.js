@@ -102,7 +102,7 @@ function cardHTML(card, hidden = false, delay = 0, flip = false) {
   if (hidden) return `<div class="card back" style="animation-delay:${delay}ms" aria-label="裏向きのカード"></div>`;
   const red = card.suit === '♥' || card.suit === '♦';
   const label = cardLabel(card);
-  const suitIcon = `<span class="suit-icon ${SUIT_CLASS[card.suit]}"></span>`;
+  const suitIcon = `<span class="suit-icon ${SUIT_CLASS[card.suit]}"><i></i></span>`;
   return `<div class="card ${red ? 'red' : ''} ${flip ? 'flip-in' : ''}" style="animation-delay:${delay}ms" aria-label="${label}${card.suit}">
     <span class="rank">${label}</span><span class="suit">${suitIcon}</span><span class="mini">${label}</span>
   </div>`;

@@ -89,6 +89,7 @@ button { -webkit-tap-highlight-color: transparent; }
 }
 .suit-icon.spade::before { left:.42em; transform:rotate(-45deg); transform-origin:0 100%; }
 .suit-icon.spade::after  { left:0;     transform:rotate(45deg);  transform-origin:100% 100%; }
+.suit-icon.spade i { position:absolute; left:50%; top:-.08em; width:.14em; height:.2em; background:currentColor; transform:translateX(-50%); }
 
 .suit-icon.club::before {
   content:""; position:absolute; left:50%; top:0; width:.34em; height:.34em; border-radius:50%;
