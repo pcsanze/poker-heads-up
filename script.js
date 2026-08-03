@@ -168,7 +168,7 @@ function updateRaiseBounds() {
   el.slider.step = '10';
   if (+el.slider.value < min || +el.slider.value > max) el.slider.value = String(min);
   el.raiseValue.textContent = (+el.slider.value).toLocaleString();
-  el.raise.textContent = state.currentBet === 0 ? 'BET' : 'RAISE';
+  el.raise.innerHTML = `<span class="act-label">${state.currentBet === 0 ? 'BET' : 'RAISE'}</span><span class="act-amount">${(+el.slider.value).toLocaleString()}</span>`;
 }
 
 function setMessage(text) { el.message.textContent = text; }
@@ -532,11 +532,18 @@ el.deal.addEventListener('click', () => {
   const gameOver = state.playerStack <= 0 || state.cpuStack <= 0;
   if (gameOver) newGame(); else startHand();
 });
-el.slider.addEventListener('input', render);
+let raiseAdjustTimer = null;
+function flashRaiseAdjust() {
+  el.raise.classList.add('adjusting');
+  clearTimeout(raiseAdjustTimer);
+  raiseAdjustTimer = setTimeout(() => el.raise.classList.remove('adjusting'), 500);
+}
+el.slider.addEventListener('input', () => { render(); flashRaiseAdjust(); });
 el.bbButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     el.slider.value = String(+btn.dataset.bb * BIG_BLIND);
     render();
+    flashRaiseAdjust();
   });
 });
 

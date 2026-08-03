@@ -149,6 +149,9 @@ input[type="range"] { width:100%; accent-color:var(--gold); }
 .action.primary { color:#15241e; background:linear-gradient(180deg, #f0d58f, #c89c49); border-color:#f4dfa8; }
 .action.danger { background:linear-gradient(180deg, #a9433f, #722a28); }
 .action.deal { color:#d5eee5; background:linear-gradient(180deg, #16865f, #0d5b40); }
+.action .act-label, .action .act-amount { display:block; }
+.action .act-amount { font-variant-numeric:tabular-nums; font-size:1.05em; margin-top:1px; }
+.action.adjusting { color:#241a08; background:linear-gradient(180deg, #f0d58f, #c89c49); border-color:#f4dfa8; transition:background .15s ease, color .15s ease; }
 .action.deal.newgame { color:#15241e; background:linear-gradient(180deg, #f0d58f, #c89c49); border-color:#f4dfa8; }
 .action:disabled { opacity:.32; cursor:not-allowed; }
 .legend { display:flex; justify-content:space-between; gap:12px; margin-top:12px; color:#788a84; font-size:.66rem; letter-spacing:.06em; font-weight:800; }
