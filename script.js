@@ -35,6 +35,7 @@ const el = {
   cpuStatus: $('cpuStatus'), playerStatus: $('playerStatus'), phase: $('phaseLabel'),
   message: $('message'), fold: $('foldBtn'), checkCall: $('checkCallBtn'), raise: $('raiseBtn'),
   deal: $('dealBtn'), slider: $('raiseSlider'), raiseValue: $('raiseValue'),
+  bbButtons: document.querySelectorAll('.bb-btn'),
   handNo: $('handNo'), bestHand: $('bestHand'),
   cpuDealer: $('cpuDealer'), playerDealer: $('playerDealer'),
   playerSeat: document.querySelector('.player-seat'), cpuSeat: document.querySelector('.cpu-seat')
@@ -136,6 +137,7 @@ function render() {
   el.checkCall.disabled = !playerTurn;
   el.raise.disabled = !playerTurn || state.playerStack <= toCall || state.raisesThisStreet >= 3;
   el.slider.disabled = el.raise.disabled;
+  el.bbButtons.forEach(b => { b.disabled = el.raise.disabled; });
 
   const gameOver = state.playerStack <= 0 || state.cpuStack <= 0;
   el.deal.classList.toggle('newgame', gameOver);
@@ -531,5 +533,11 @@ el.deal.addEventListener('click', () => {
   if (gameOver) newGame(); else startHand();
 });
 el.slider.addEventListener('input', render);
+el.bbButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    el.slider.value = String(+btn.dataset.bb * BIG_BLIND);
+    render();
+  });
+});
 
 render();
