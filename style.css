@@ -60,7 +60,7 @@ button { -webkit-tap-highlight-color: transparent; }
 .dealer-chip { width:20px; height:20px; border-radius:50%; display:none; place-items:center; background:var(--cream); color:#18251f; font-size:.68rem; font-weight:900; flex-shrink:0; }
 .dealer-chip.active { display:inline-grid; }
 .cards { display:flex; justify-content:center; gap:8px; min-height:0; flex-shrink:1; }
-.seat-row .cards { justify-content:flex-end; flex-shrink:0; }
+.seat-row .cards { justify-content:center; flex-shrink:0; }
 .hand-col { display:flex; flex-direction:column; align-items:flex-end; gap:3px; min-height:0; flex-shrink:0; }
 .best-hand { color:var(--gold); font-size:.7rem; font-weight:800; letter-spacing:.06em; white-space:nowrap; }
 .card {
