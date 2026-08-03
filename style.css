@@ -108,7 +108,25 @@ button { -webkit-tap-highlight-color: transparent; }
 @keyframes dealIn { from { opacity:0; transform:translateY(-12px) scale(.95); } }
 @keyframes flipIn { from { transform:rotateY(90deg) translateY(-8px); opacity:.15; } to { transform:rotateY(0) translateY(0); opacity:1; } }
 .card.flip-in { animation:flipIn .4s ease both; }
-.status-pill { align-self:center; min-width:86px; flex-shrink:0; text-align:center; color:#d9e5e1; background:rgba(3,16,12,.55); border:1px solid rgba(255,255,255,.1); border-radius:999px; padding:clamp(3px,.7vh,5px) 11px; font-size:clamp(.58rem,1vh,.68rem); font-weight:800; letter-spacing:.1em; }
+.status-pill { align-self:center; min-width:86px; flex-shrink:0; text-align:center; color:#d9e5e1; background:rgba(3,16,12,.55); border:1px solid rgba(255,255,255,.1); border-radius:999px; padding:clamp(3px,.7vh,5px) 11px; font-size:clamp(.58rem,1vh,.68rem); font-weight:800; letter-spacing:.1em; transition:font-size .15s ease, padding .15s ease; }
+.status-pill[data-status="WIN"],
+.status-pill[data-status="LOSE"],
+.status-pill[data-status="SPLIT"],
+.status-pill[data-status="CALL"],
+.status-pill[data-status="CHECK"],
+.status-pill[data-status="BET"],
+.status-pill[data-status="RAISE"],
+.status-pill[data-status="ALL-IN"] {
+  font-size:clamp(1rem, 3.2vh, 1.7rem); padding:clamp(6px,1.4vh,10px) clamp(16px,3vw,26px); letter-spacing:.12em; min-width:0;
+}
+.status-pill[data-amt]::after { content:attr(data-amt); display:block; font-size:.85em; margin-top:2px; font-variant-numeric:tabular-nums; }
+.status-pill[data-status="LOSE"] { color:#f6dcda; background:rgba(169,67,63,.4); border-color:rgba(201,93,87,.55); }
+.status-pill[data-status="SPLIT"] { color:var(--cream); background:rgba(255,255,255,.1); }
+.status-pill[data-status="WIN"] {
+  color:#241a08; background:linear-gradient(180deg,#f5da97,#c89c49); border-color:#f9e6ae;
+  animation:statusWinGlow 1.1s ease-in-out infinite alternate;
+}
+@keyframes statusWinGlow { from{ box-shadow:0 0 10px rgba(227,189,106,.35); } to{ box-shadow:0 0 28px rgba(227,189,106,.8); } }
 .board-area { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(6px,1.4vh,12px); min-height:auto; }
 .board { min-height:auto; flex-shrink:0; }
 .phase-label { color:var(--gold); letter-spacing:.2em; font-size:.72rem; font-weight:900; flex-shrink:0; }

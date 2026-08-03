@@ -176,7 +176,12 @@ function updateRaiseBounds() {
 }
 
 function setMessage(text) { el.message.textContent = text; }
-function setStatus(player, text) { (player === 'player' ? el.playerStatus : el.cpuStatus).textContent = text; }
+function setStatus(player, text, amount) {
+  const elp = player === 'player' ? el.playerStatus : el.cpuStatus;
+  elp.textContent = text;
+  elp.dataset.status = text;
+  if (amount !== undefined) elp.dataset.amt = (+amount).toLocaleString(); else delete elp.dataset.amt;
+}
 
 function commit(player, amount) {
   const stackKey = `${player}Stack`;
@@ -265,10 +270,10 @@ function playerCheckCall() {
     const paid = commit('player', toCall);
     if (paid < toCall) {
       refundUncalled('cpu', toCall - paid);
-      setStatus('player', 'ALL-IN');
+      setStatus('player', 'ALL-IN', paid);
       setMessage(`あなたは ${paid} でオールインコール(超過分はCPUへ返却)`);
     } else {
-      setStatus('player', 'CALL');
+      setStatus('player', 'CALL', paid);
       setMessage(`あなたは ${paid} コール`);
     }
     chipSound();
@@ -288,7 +293,7 @@ function playerRaise() {
   const paid = commit('player', amount);
   if (state.playerStreetBet <= oldBet) return;
   state.raisesThisStreet++;
-  setStatus('player', state.playerStack === 0 ? 'ALL-IN' : (oldBet ? 'RAISE' : 'BET'));
+  setStatus('player', state.playerStack === 0 ? 'ALL-IN' : (oldBet ? 'RAISE' : 'BET'), paid);
   setMessage(`あなたは ${paid} を追加`);
   chipSound();
   render();
@@ -379,17 +384,17 @@ function cpuAct() {
     const oldBet = state.currentBet;
     const paid = commit('cpu', targetAdditional);
     if (state.cpuStreetBet > oldBet) state.raisesThisStreet++;
-    setStatus('cpu', state.cpuStack === 0 ? 'ALL-IN' : (oldBet ? 'RAISE' : 'BET'));
+    setStatus('cpu', state.cpuStack === 0 ? 'ALL-IN' : (oldBet ? 'RAISE' : 'BET'), paid);
     setMessage(`CPUは ${paid} を追加`);
     chipSound();
   } else if (toCall > 0) {
     const paid = commit('cpu', toCall);
     if (paid < toCall) {
       refundUncalled('player', toCall - paid);
-      setStatus('cpu', 'ALL-IN');
+      setStatus('cpu', 'ALL-IN', paid);
       setMessage(`CPUは ${paid} でオールインコール`);
     } else {
-      setStatus('cpu', 'CALL');
+      setStatus('cpu', 'CALL', paid);
       setMessage(`CPUは ${paid} コール`);
     }
     chipSound();
