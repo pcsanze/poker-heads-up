@@ -117,7 +117,21 @@ button { -webkit-tap-highlight-color: transparent; }
 .status-pill[data-status="BET"],
 .status-pill[data-status="RAISE"],
 .status-pill[data-status="ALL-IN"] {
-  font-size:clamp(1rem, 3.2vh, 1.7rem); padding:clamp(6px,1.4vh,10px) clamp(16px,3vw,26px); letter-spacing:.12em; min-width:0;
+  letter-spacing:.12em; min-width:0;
+}
+.status-pill[data-status="CALL"],
+.status-pill[data-status="CHECK"] {
+  font-size:clamp(.78rem, 2vh, 1.05rem); padding:clamp(4px,1vh,7px) clamp(12px,2.2vw,18px);
+}
+.status-pill[data-status="WIN"],
+.status-pill[data-status="LOSE"],
+.status-pill[data-status="SPLIT"],
+.status-pill[data-status="BET"],
+.status-pill[data-status="RAISE"] {
+  font-size:clamp(1rem, 3.2vh, 1.7rem); padding:clamp(6px,1.4vh,10px) clamp(16px,3vw,26px);
+}
+.status-pill[data-status="ALL-IN"] {
+  font-size:clamp(1.25rem, 3.9vh, 2.15rem); padding:clamp(7px,1.7vh,12px) clamp(18px,3.4vw,30px);
 }
 .status-pill[data-amt]::after { content:attr(data-amt); display:block; font-size:.85em; margin-top:2px; font-variant-numeric:tabular-nums; }
 .status-pill[data-status="LOSE"] { color:#f6dcda; background:rgba(169,67,63,.4); border-color:rgba(201,93,87,.55); }
