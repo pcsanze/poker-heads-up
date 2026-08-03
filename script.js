@@ -149,7 +149,11 @@ function render() {
     el.deal.textContent = 'DEAL';
   }
 
-  el.checkCall.textContent = toCall > 0 ? `CALL ${Math.min(toCall, state.playerStack)}` : 'CHECK';
+  if (toCall > 0) {
+    el.checkCall.innerHTML = `<span class="act-label">CALL</span><span class="act-amount">${Math.min(toCall, state.playerStack).toLocaleString()}</span>`;
+  } else {
+    el.checkCall.textContent = 'CHECK';
+  }
   updateRaiseBounds();
 }
 
@@ -532,18 +536,11 @@ el.deal.addEventListener('click', () => {
   const gameOver = state.playerStack <= 0 || state.cpuStack <= 0;
   if (gameOver) newGame(); else startHand();
 });
-let raiseAdjustTimer = null;
-function flashRaiseAdjust() {
-  el.raise.classList.add('adjusting');
-  clearTimeout(raiseAdjustTimer);
-  raiseAdjustTimer = setTimeout(() => el.raise.classList.remove('adjusting'), 500);
-}
-el.slider.addEventListener('input', () => { render(); flashRaiseAdjust(); });
+el.slider.addEventListener('input', render);
 el.bbButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     el.slider.value = String(+btn.dataset.bb * BIG_BLIND);
     render();
-    flashRaiseAdjust();
   });
 });
 
