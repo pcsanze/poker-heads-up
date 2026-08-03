@@ -543,9 +543,13 @@ el.deal.addEventListener('click', () => {
 });
 el.slider.addEventListener('input', render);
 el.bbButtons.forEach(btn => {
+  const bb = +btn.dataset.bb;
+  btn.innerHTML = `<span class="bb-amt">${(bb * BIG_BLIND).toLocaleString()}</span><span class="bb-label">${bb}BB</span>`;
   btn.addEventListener('click', () => {
-    el.slider.value = String(+btn.dataset.bb * BIG_BLIND);
+    if (btn.disabled) return;
+    el.slider.value = String(bb * BIG_BLIND);
     render();
+    playerRaise();
   });
 });
 
