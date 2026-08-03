@@ -165,7 +165,7 @@ input[type="range"] { width:100%; accent-color:var(--gold); }
   .avatar { width:clamp(22px, min(4.5vh, 9vw), 34px); height:clamp(22px, min(4.5vh, 9vw), 34px); font-size:.56rem; }
   .message { font-size:.74rem; padding:0 12px; }
   .controls { padding:clamp(8px,1.6vh,12px); }
-  .actions { flex-direction:column; gap:10px; }
+  .actions { gap:10px; }
   .action { width:clamp(46px, 15vw, 64px); height:clamp(46px, 15vw, 64px); font-size:.62rem; }
   .legend { flex-wrap:wrap; }
 }
