@@ -128,7 +128,7 @@ function render() {
   el.board.innerHTML = state.board.length ? state.board.map((c,i)=>cardHTML(c,false,i*55)).join('') + placeholders(5-state.board.length) : placeholders(5);
 
   const playerEval = state.playerCards.length && state.board.length >= 3 ? evaluate([...state.playerCards, ...state.board]) : null;
-  el.bestHand.textContent = `BEST HAND: ${playerEval ? playerEval.name : '-'}`;
+  el.bestHand.textContent = playerEval ? playerEval.name : '-';
 
   const playerTurn = state.turn === 'player' && !state.handOver && !state.cpuThinking;
   const toCall = Math.max(0, state.currentBet - state.playerStreetBet);
@@ -166,7 +166,7 @@ function updateRaiseBounds() {
   el.slider.step = '10';
   if (+el.slider.value < min || +el.slider.value > max) el.slider.value = String(min);
   el.raiseValue.textContent = (+el.slider.value).toLocaleString();
-  el.raise.textContent = `${state.currentBet === 0 ? 'BET' : 'RAISE'} ${( +el.slider.value).toLocaleString()}`;
+  el.raise.textContent = state.currentBet === 0 ? 'BET' : 'RAISE';
 }
 
 function setMessage(text) { el.message.textContent = text; }
