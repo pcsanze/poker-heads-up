@@ -148,7 +148,7 @@ button { -webkit-tap-highlight-color: transparent; }
 .pot-panel span { color:var(--muted); font-size:.68rem; letter-spacing:.14em; font-weight:900; }
 .pot-panel strong { color:var(--gold); font-size:1.15rem; font-variant-numeric:tabular-nums; display:inline-block; }
 .pot-panel strong.bump { animation:stackBump .55s ease; }
-.message { min-height:1.5em; margin:0; text-align:center; color:#eff7f3; font-size:.88rem; }
+.message { display:none; }
 @keyframes messagePop { from{ opacity:0; transform:translateY(6px) scale(.96); } to{ opacity:1; transform:translateY(0) scale(1); } }
 .message.result { animation:messagePop .35s ease both; font-weight:800; }
 .message.win { color:var(--gold); text-shadow:0 0 14px rgba(227,189,106,.5); }
