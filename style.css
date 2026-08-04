@@ -44,7 +44,7 @@ button { -webkit-tap-highlight-color: transparent; }
 }
 .poker-table::after { content:""; position:absolute; inset:clamp(6px,1.8vh,20px) clamp(12px,4.5vw,52px); border:1px solid var(--line); border-radius:30px; pointer-events:none; }
 .seat, .board-area { position:relative; z-index:1; min-height:0; }
-.seat { display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:clamp(3px, .8vh, 8px); border-radius:26px; transition:opacity .4s ease, filter .4s ease; }
+.seat { display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:clamp(3px, .8vh, 8px); border-radius:26px; transition:opacity .4s ease, filter .4s ease; padding-bottom:clamp(2.8rem, 8.5vh, 5rem); }
 .seat-row { display:flex; align-items:center; justify-content:center; gap:clamp(14px, 4vw, 32px); min-height:0; }
 @keyframes winPulse { 0%,100%{ box-shadow:0 0 0 rgba(227,189,106,0); } 50%{ box-shadow:0 0 30px rgba(227,189,106,.55); } }
 .seat.winner { animation:winPulse 1.1s ease-in-out 2; }
@@ -108,7 +108,7 @@ button { -webkit-tap-highlight-color: transparent; }
 @keyframes dealIn { from { opacity:0; transform:translateY(-12px) scale(.95); } }
 @keyframes flipIn { from { transform:rotateY(90deg) translateY(-8px); opacity:.15; } to { transform:rotateY(0) translateY(0); opacity:1; } }
 .card.flip-in { animation:flipIn .4s ease both; }
-.status-pill { align-self:center; min-width:86px; flex-shrink:0; text-align:center; color:#d9e5e1; background:rgba(3,16,12,.55); border:1px solid rgba(255,255,255,.1); border-radius:999px; padding:clamp(3px,.7vh,5px) 11px; font-size:clamp(.58rem,1vh,.68rem); font-weight:800; letter-spacing:.1em; transition:font-size .15s ease, padding .15s ease; }
+.status-pill { position:absolute; left:50%; bottom:clamp(2px,.6vh,6px); transform:translateX(-50%); min-width:86px; text-align:center; color:#d9e5e1; background:rgba(3,16,12,.55); border:1px solid rgba(255,255,255,.1); border-radius:999px; padding:clamp(3px,.7vh,5px) 11px; font-size:clamp(.58rem,1vh,.68rem); font-weight:800; letter-spacing:.1em; transition:font-size .15s ease, padding .15s ease; }
 .status-pill[data-status="WIN"],
 .status-pill[data-status="LOSE"],
 .status-pill[data-status="SPLIT"],
