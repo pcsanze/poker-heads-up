@@ -129,6 +129,14 @@ button { -webkit-tap-highlight-color: transparent; }
 .status-pill[data-status="LOSE"],
 .status-pill[data-status="SPLIT"],
 .status-pill[data-status="BET"],
+.status-pill[data-status="RAISE"],
+.status-pill[data-status="ALL-IN"] {
+  top:50%; bottom:auto; margin:0; transform:translate(-50%,-50%); z-index:6;
+}
+.status-pill[data-status="WIN"],
+.status-pill[data-status="LOSE"],
+.status-pill[data-status="SPLIT"],
+.status-pill[data-status="BET"],
 .status-pill[data-status="RAISE"] {
   font-size:clamp(1rem, 3.2vh, 1.7rem); padding:clamp(6px,1.4vh,10px) clamp(16px,3vw,26px);
 }
