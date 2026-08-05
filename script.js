@@ -112,6 +112,8 @@ function placeholders(n) { return Array.from({ length:n }, () => '<div class="ca
 function bump(elm) { elm.classList.remove('bump'); void elm.offsetWidth; elm.classList.add('bump'); }
 
 let lastRenderedPot = 0;
+let lastPlayerCardsSig = null, lastCpuCardsSig = null, lastBoardCardsSig = null;
+function cardsSig(cards, extra) { return cards.map(c => c.rank + c.suit).join(',') + '|' + (extra || ''); }
 function render() {
   el.playerStack.textContent = state.playerStack.toLocaleString();
   el.cpuStack.textContent = state.cpuStack.toLocaleString();
@@ -122,11 +124,23 @@ function render() {
   el.playerDealer.classList.toggle('active', state.dealer === 'player');
   el.cpuDealer.classList.toggle('active', state.dealer === 'cpu');
 
-  el.playerCards.innerHTML = state.playerCards.length ? state.playerCards.map((c,i)=>cardHTML(c,false,i*70)).join('') : placeholders(2);
+  const playerSig = cardsSig(state.playerCards);
+  if (playerSig !== lastPlayerCardsSig) {
+    el.playerCards.innerHTML = state.playerCards.length ? state.playerCards.map((c,i)=>cardHTML(c,false,i*70)).join('') : placeholders(2);
+    lastPlayerCardsSig = playerSig;
+  }
   const revealCpu = state.phase === 'showdown' || (state.handOver && state.cpuCards.length && state.phase !== 'idle');
   const flipReveal = state.phase === 'showdown';
-  el.cpuCards.innerHTML = state.cpuCards.length ? state.cpuCards.map((c,i)=>cardHTML(c,!revealCpu,i*70, flipReveal && revealCpu)).join('') : placeholders(2);
-  el.board.innerHTML = state.board.length ? state.board.map((c,i)=>cardHTML(c,false,i*55)).join('') + placeholders(5-state.board.length) : placeholders(5);
+  const cpuSig = cardsSig(state.cpuCards, revealCpu + '|' + flipReveal);
+  if (cpuSig !== lastCpuCardsSig) {
+    el.cpuCards.innerHTML = state.cpuCards.length ? state.cpuCards.map((c,i)=>cardHTML(c,!revealCpu,i*70, flipReveal && revealCpu)).join('') : placeholders(2);
+    lastCpuCardsSig = cpuSig;
+  }
+  const boardSig = cardsSig(state.board);
+  if (boardSig !== lastBoardCardsSig) {
+    el.board.innerHTML = state.board.length ? state.board.map((c,i)=>cardHTML(c,false,i*55)).join('') + placeholders(5-state.board.length) : placeholders(5);
+    lastBoardCardsSig = boardSig;
+  }
 
   const playerEval = state.playerCards.length && state.board.length >= 3 ? evaluate([...state.playerCards, ...state.board]) : null;
   el.bestHand.textContent = playerEval ? playerEval.name : '-';
