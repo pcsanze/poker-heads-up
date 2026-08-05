@@ -131,16 +131,14 @@ button { -webkit-tap-highlight-color: transparent; }
   top:50%; bottom:auto; margin:0; transform:translate(-50%,-50%); z-index:6;
 }
 .status-pill[data-status="BET"],
-.status-pill[data-status="RAISE"] {
+.status-pill[data-status="RAISE"],
+.status-pill[data-status="WIN"],
+.status-pill[data-status="LOSE"],
+.status-pill[data-status="SPLIT"] {
   font-size:clamp(1rem, 3.2vh, 1.7rem); padding:clamp(6px,1.4vh,10px) clamp(16px,3vw,26px);
 }
 .status-pill[data-status="ALL-IN"] {
   font-size:clamp(1.25rem, 3.9vh, 2.15rem); padding:clamp(7px,1.7vh,12px) clamp(18px,3.4vw,30px);
-}
-.status-pill[data-status="WIN"],
-.status-pill[data-status="LOSE"],
-.status-pill[data-status="SPLIT"] {
-  font-size:clamp(.92rem, 2.6vh, 1.35rem); padding:clamp(5px,1.1vh,8px) clamp(14px,2.6vw,22px);
 }
 .status-pill[data-amt]::after { content:attr(data-amt); display:block; font-size:.85em; margin-top:2px; font-variant-numeric:tabular-nums; }
 .status-pill[data-status="LOSE"] { color:#f6e7e3; background:rgba(120,71,61,.92); border-color:rgba(166,99,87,.7); }
