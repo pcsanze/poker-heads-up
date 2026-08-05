@@ -41,7 +41,7 @@ button { -webkit-tap-highlight-color: transparent; }
     radial-gradient(ellipse at center, rgba(255,255,255,.16), transparent 55%),
     repeating-linear-gradient(35deg, rgba(255,255,255,.07) 0 2px, transparent 2px 7px),
     linear-gradient(145deg, var(--felt), var(--felt-dark));
-  display:grid; grid-template-rows: 1fr 1.25fr 1fr; padding:clamp(8px,2vh,24px) clamp(18px, 5vw, 58px);
+  display:grid; grid-template-rows: 1fr 1.25fr 1fr; padding:clamp(10px,2.6vh,32px) clamp(18px, 5vw, 58px);
 }
 .poker-table::after { content:""; position:absolute; inset:clamp(6px,1.8vh,20px) clamp(12px,4.5vw,52px); border:1px solid var(--line); border-radius:30px; pointer-events:none; }
 .seat, .board-area { position:relative; z-index:1; min-height:0; }
@@ -126,23 +126,22 @@ button { -webkit-tap-highlight-color: transparent; }
 .status-pill[data-status="CHECK"] {
   font-size:clamp(.78rem, 2vh, 1.05rem); padding:clamp(4px,1vh,7px) clamp(12px,2.2vw,18px);
 }
-.status-pill[data-status="WIN"],
-.status-pill[data-status="LOSE"],
-.status-pill[data-status="SPLIT"],
 .status-pill[data-status="BET"],
 .status-pill[data-status="RAISE"],
 .status-pill[data-status="ALL-IN"] {
   top:50%; bottom:auto; margin:0; transform:translate(-50%,-50%); z-index:6;
 }
-.status-pill[data-status="WIN"],
-.status-pill[data-status="LOSE"],
-.status-pill[data-status="SPLIT"],
 .status-pill[data-status="BET"],
 .status-pill[data-status="RAISE"] {
   font-size:clamp(1rem, 3.2vh, 1.7rem); padding:clamp(6px,1.4vh,10px) clamp(16px,3vw,26px);
 }
 .status-pill[data-status="ALL-IN"] {
   font-size:clamp(1.25rem, 3.9vh, 2.15rem); padding:clamp(7px,1.7vh,12px) clamp(18px,3.4vw,30px);
+}
+.status-pill[data-status="WIN"],
+.status-pill[data-status="LOSE"],
+.status-pill[data-status="SPLIT"] {
+  font-size:clamp(.92rem, 2.6vh, 1.35rem); padding:clamp(5px,1.1vh,8px) clamp(14px,2.6vw,22px);
 }
 .status-pill[data-amt]::after { content:attr(data-amt); display:block; font-size:.85em; margin-top:2px; font-variant-numeric:tabular-nums; }
 .status-pill[data-status="LOSE"] { color:#f6e7e3; background:rgba(120,71,61,.92); border-color:rgba(166,99,87,.7); }
